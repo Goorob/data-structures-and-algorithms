@@ -26,8 +26,11 @@ Return an array containing all the matches.
 ------------------------------------------------------------------------------------------------ */
 
 const isCapitalized = (str) => {
-  // Solution code here...
+    let capital = /\b[A-Z]\w*/g;
+ let match = str.match(capital)
+ return match ? match :[] ;
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3

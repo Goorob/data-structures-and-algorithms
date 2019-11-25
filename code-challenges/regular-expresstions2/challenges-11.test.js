@@ -30,7 +30,7 @@ Note: if you ever need to validate an email using a regex in practice, the Inter
 ------------------------------------------------------------------------------------------------ */
 
 const validateEmail = (email) => {
-    
+
     var validtorForEmail =/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     return validtorForEmail.test(email) ? true :false;
 };
@@ -57,8 +57,11 @@ Return either true or false.
 ------------------------------------------------------------------------------------------------ */
 
 const validatePhoneNumber = (phoneNumber) => {
-  // Solution code here...
-};
+
+        let validatorPhoneNumber = /^((\d{3})|(\(\d{3}\)))[ -]?\d{3}[ -]?\d{4}$/;
+        return validatorPhoneNumber.test(phoneNumber);
+      };
+      
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4 - Stretch Goal

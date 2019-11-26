@@ -86,8 +86,14 @@ Note: You must use reduce for this challenge. You may not use the built-in .reve
 ------------------------------------------------------------------------------------------------ */
 
 const reversedString = (str) => {
-  // Solution code here...
-};
+    let stringSplit = str.split('');
+    let reverse = stringSplit.reduce( (stringAfter,letter) =>
+    {
+      return letter + stringAfter;
+    },'');
+    return reverse;
+  };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4

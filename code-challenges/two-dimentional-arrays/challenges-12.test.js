@@ -26,7 +26,7 @@ const grandTotal = (stores) => {
 
     return stores.reduce((acc, cookieStore) => {
       for (let i = 0; i < cookieStore.length; i++) {
-        
+
         if (!acc[i]) acc[i] = 0;
 
         acc[i] += cookieStore[i];
@@ -48,7 +48,14 @@ Write a function named salesData that uses forEach to iterate over the hourlySal
 ------------------------------------------------------------------------------------------------ */
 
 const salesData = (hours, data) => {
-  // Solution code here...
+  const hourlySales = [];
+  data.forEach((d, idx) => {
+    hourlySales.push({
+      hourlySales: d ,
+      time: hours[idx]
+     });
+  });
+  return hourlySales;
 };
 
 /* ------------------------------------------------------------------------------------------------

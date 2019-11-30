@@ -23,9 +23,19 @@ const alkiBeach = [33, 31, 147, 130, 27, 93, 38, 126, 141, 63, 46, 17];
 const cookieStores = [firstPike, seaTac, seattleCenter, capHill, alkiBeach];
 
 const grandTotal = (stores) => {
-  // Solution code here...
 
-};
+    return stores.reduce((acc, cookieStore) => {
+      for (let i = 0; i < cookieStore.length; i++) {
+
+        if (!acc[i]) acc[i] = 0;
+
+        acc[i] += cookieStore[i];
+      }
+      return acc;
+    }, []);
+  };
+
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -38,7 +48,14 @@ Write a function named salesData that uses forEach to iterate over the hourlySal
 ------------------------------------------------------------------------------------------------ */
 
 const salesData = (hours, data) => {
-  // Solution code here...
+  const hourlySales = [];
+  data.forEach((d, idx) => {
+    hourlySales.push({
+      hourlySales: d ,
+      time: hours[idx]
+     });
+  });
+  return hourlySales;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -60,7 +77,7 @@ const errands = [
 ];
 
 const howManyTreats = (arr) => {
-  // Solution code here...
+  return arr[2].items[1].quantity;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -82,7 +99,8 @@ The top row of the board is considered row zero and row numbers increase as they
 ------------------------------------------------------------------------------------------------ */
 
 const battleship = (board, row, col) => {
-  //  Solution code here...
+  
+  return board[row][col] === '#' ? 'hit' : 'miss';
 };
 
 /* ------------------------------------------------------------------------------------------------

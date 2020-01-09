@@ -13,8 +13,10 @@ For example:
 ------------------------------------------------------------------------------------------------ */
 
 const isNum = (input) => {
-  let validator =/[0-9]/g ;
-  return validator.test(input );
+  let regex = /[0-9]/g ;
+
+  return regex.test(input);
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -26,9 +28,12 @@ Return an array containing all the matches.
 ------------------------------------------------------------------------------------------------ */
 
 const isCapitalized = (str) => {
-    let capital = /\b[A-Z]\w*/g;
- let match = str.match(capital)
- return match ? match :[] ;
+  const regex = /[A-Z]\w+/g;
+  let arr = [];
+  if (regex.test(str)) {
+    arr = str.match(regex);
+  }
+  return arr
 };
 
 
@@ -39,13 +44,14 @@ Write a function named citiesAtoJ that takes in an array of city names and uses 
 ------------------------------------------------------------------------------------------------ */
 
 const citiesAtoJ = (arr) => {
-    const cities = /^[A-J]/;
-    const result = [];
-    arr.forEach(element => {
-      if(cities.test(element))
-       result.push(element);
-    })
-    return result;
+    
+  const regex = /^[A-J]/;
+  let resultMatch = [];
+  arr.forEach(function(element){
+    if (regex.test(element)) {
+      resultMatch.push(element);}
+  });
+  return resultMatch;
  
 };
 
@@ -62,7 +68,13 @@ Do not use the vertical bar (pipe) in your pattern.
 ------------------------------------------------------------------------------------------------ */
 
 const matchMonth = (input) => {
-  // Solution code here...
+  let regex = /^(Oct)$|^(oct)$|^(October)$|^(october)$/g;
+  let result = regex.test(input);
+  if (result) {
+    return result;
+  } else {
+    return false;
+  }
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -76,7 +88,9 @@ The expected output of "Hello, and have a wonderful day!" is ["and ", "have ", "
 ------------------------------------------------------------------------------------------------ */
 
 const noPunctuation = str => {
-  // Solution code here...
+  let regex = /(\w+\s)/g;
+  let resultMatch = str.match(regex);
+  return resultMatch;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -92,7 +106,9 @@ For example, 'Welcome to Code 301!' will return 'W_lc_m_ t_ C_d_ 301!'.
 ------------------------------------------------------------------------------------------------ */
 
 let hangman = (str) => {
-  // Solution code here...
+  let regex = /a|e|i|o|u|A|E|I|O|U/g;
+  let result = str.replace(regex, '_');
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -108,7 +124,9 @@ Hint: All of these words end with the letters "ells".
 const seashells = 'She sells seashells by the seashore. The shells she sells are surely seashells. So if she sells shells on the seashore, I\'m sure she sells seashore shells.';
 
 const findShells = (str) => {
-  // Solution code here...
+  let regex = /\w+(ells)/g;
+  let result = str.match(regex);
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------

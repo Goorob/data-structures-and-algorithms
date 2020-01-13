@@ -9,9 +9,8 @@ For example, oddValues([1,2,3]) returns [1,3].
 ------------------------------------------------------------------------------------------------ */
 
 const oddValues = (arr) => {
-
-    return arr.filter(val => val % 2 === 1);
-
+let oddArr=arr.filter(val=>(val%2));
+return oddArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -26,8 +25,14 @@ For example, filterStringsWithVowels('gregor','hound','xyz') returns ['gregor', 
 
 
 const filterStringsWithVowels = (arr) => {
-    
-    return arr.filter(element=> /[uioea]/.test(element));
+    let vowelsArr = arr.filter(val => (
+      val.includes('a') ||
+      val.includes('i') ||
+      val.includes('e') ||
+      val.includes('o') ||
+      val.includes('u')
+    ))
+    return vowelsArr ;
 };
 
 
@@ -40,9 +45,8 @@ For example, notInFirstArray([1,2,3], [1,2,3,4]) returns [4].
 ------------------------------------------------------------------------------------------------ */
 
 const notInFirstArray = (forbiddenValues, arr) => {
-
-    return arr.filter(val => !forbiddenValues.includes(val));
-
+  let commonElement = arr.filter( str => !(forbiddenValues.includes(str)))
+  return commonElement;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -85,9 +89,10 @@ const snorlaxData = {
 };
 
 const getBaseStatGreaterThan = (arr, minBaseStat) => {
-
-  return arr.filter(element => element.baseStat > minBaseStat);
-  
+let statsArr = arr.filter(val =>{
+ return (val.baseStat > minBaseStat);
+})
+  return statsArr ;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -99,7 +104,12 @@ For example, getStatName(snorlaxData.stats, 50) will return ['special-defense', 
 ------------------------------------------------------------------------------------------------ */
 
 const getStatName = (arr, minBaseStat) => {
-  // Solution code here...
+ let namesOfStats =[];
+  let statsArr = arr.filter(val => (val.baseStat > minBaseStat));
+  statsArr.forEach(element => {
+    namesOfStats.push(ele.stat.name);
+  });
+  return namesOfStats;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -152,8 +162,13 @@ const characters = [
 ];
 
 const getCharactersWithoutChildren = (arr) => {
-  // Solution code here...
-};
+    let haveChildren = arr.filter(child =>{
+     let objKey= Object.keys(child);
+    return  !(objKey.includes('children'))
+      });
+    return haveChildren ;
+   };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
@@ -164,7 +179,15 @@ For example: evenOddNumericValues(['Gregor', 2, 4, 1]) returns ['even', 'even', 
 ------------------------------------------------------------------------------------------------ */
 
 const evenOddNumericValues = (arr) => {
-  // Solution code here...
+ let typeTestArr = arr.filter(ele =>(typeof(ele) === 'number'))
+ let oddEvenArr = typeTestArr.map(val =>{
+   if (val%2===0){
+     return 'even';
+   }else{
+     return 'odd' ;
+   }
+ })
+ return oddEvenArr ;
 };
 
 /* ------------------------------------------------------------------------------------------------

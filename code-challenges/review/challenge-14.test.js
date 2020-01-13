@@ -125,7 +125,8 @@ https://secure.com returns true because the URL is secure
 https:/missingslash.org returns false because the URL is malformed
 ------------------------------------------------------------------------------------------------ */
 const isSecure = (url) => {
-// Solution code here...
+  let regex = /^(https:\/\/)[a-z0-9]\w+(\.)((com)|(io)|(edu)|(org)|(gov)|(mil))$/gi;
+  return regex.test(url);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -148,7 +149,23 @@ Here is a sample board:
 ------------------------------------------------------------------------------------------------ */
 
 const detectTicTacToeWin = (board) => {
-  // Solution code here...
+  const check = (r1, c1, r2, c2, r3, c3) => {
+    if (board[r1][c1] === 'X' && board[r2][c2] === 'X' && board[r3][c3] === 'X') {
+      return true;
+    } else if (board[r1][c1] === 'O' && board[r2][c2] === 'O' && board[r3][c3] === 'O') {
+      return true;
+    } else {return false;}
+  };
+  // Rows and Columns
+  for(let i=0;i<3;i++){
+    if (check(i,0,i,1,i,2)) { return true; 
+    } else if (check(0,i,1,i,2,i)) { return true;}
+  }
+  // Diagonal right
+  if (check(0,0,1,1,2,2)) { return true; }
+  // Diagonal left
+  else if (check(2,0,1,1,0,2)) { return true; }
+  else {return false}
 };
 
 /* ------------------------------------------------------------------------------------------------

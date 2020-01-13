@@ -23,9 +23,20 @@ const alkiBeach = [33, 31, 147, 130, 27, 93, 38, 126, 141, 63, 46, 17];
 const cookieStores = [firstPike, seaTac, seattleCenter, capHill, alkiBeach];
 
 const grandTotal = (stores) => {
-  // Solution code here...
+ 
+    let values = new Array(hoursOpen.length).fill(0);
+  
+    for(let i=0; i<= stores.length-1; i++) {
+  
+      for(let j=0; j<=stores[i].length-1; j++) {
+        let value = stores[i][j];
+        values[j] += value;
+      }
+    }
+    return values;
+  };
 
-};
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -38,7 +49,17 @@ Write a function named salesData that uses forEach to iterate over the hourlySal
 ------------------------------------------------------------------------------------------------ */
 
 const salesData = (hours, data) => {
-  // Solution code here...
+  let cookieSales = new Object();
+  let salesArr = new Array();
+
+  data.forEach( (saleTotal,k) => {
+    cookieSales = {};
+    cookieSales.sales = `${saleTotal} cookies`;
+    cookieSales.time = hours[k];
+    salesArr.push(cookieSales);
+  });
+
+  return salesArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -60,7 +81,7 @@ const errands = [
 ];
 
 const howManyTreats = (arr) => {
-  // Solution code here...
+  return arr[2].items[1].quantity;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -82,7 +103,11 @@ The top row of the board is considered row zero and row numbers increase as they
 ------------------------------------------------------------------------------------------------ */
 
 const battleship = (board, row, col) => {
-  //  Solution code here...
+  if ( board[row][col] === '#' ) {
+    return 'hit';
+  } else {
+    return 'miss';
+  }
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -94,7 +119,7 @@ For example, the following input returns a product of 720: [[1,2], [3,4], [5,6]]
 ------------------------------------------------------------------------------------------------ */
 
 const calculateProduct = (numbers) => {
-  // Solution code here...
+  return numbers.reduce((total, arr) => total * arr.reduce((arrTotal, value) => value * arrTotal, 1), 1);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -114,7 +139,14 @@ const weeklyTemperatures = [
 ];
 
 const averageDailyTemperature = (weather) => {
-  // Solution code here...
+  let tempTotal = weather.reduce((sums, day) => {
+    return day.reduce((dayTotal, temp) => {
+      dayTotal.tempSum += temp;
+      dayTotal.values ++;
+      return dayTotal;
+    }, sums);
+  }, {tempSum: 0, values: 0,});
+  return tempTotal.tempSum / tempTotal.values;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -135,7 +167,16 @@ let lowestWeeklyTemperatureData = [
 ];
 
 const lowestWeeklyAverage = (weather) => {
-  // Solution code here...
+  let weekAvgs = [];
+  let average = 0;
+  weather.forEach( week => {
+    week.forEach( ele => {
+      average += ele;
+    });
+    weekAvgs.push((average/7));
+    average = 0;
+  });
+  return Math.min(...weekAvgs);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -151,7 +192,19 @@ For example, excel('1,1,1\n4,4,4\n9,9,9') returns [3, 12, 27].
 ------------------------------------------------------------------------------------------------ */
 
 const excel = (str) => {
-  // Solution code here...
+  let arr1 = str.split('\n');
+  let arr2 = [];
+  arr1.forEach( ele => {
+    let arr3 = [];
+    let product = 0;
+    let arr = ele.split(',');
+    arr.forEach( a => {
+      arr3.push(parseInt(a))
+    });
+    arr3.forEach( num => product += num)
+    arr2.push(product);
+  });
+  return arr2;
 };
 
 /* ------------------------------------------------------------------------------------------------
